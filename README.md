@@ -78,13 +78,13 @@ Before you begin, ensure you have the following installed:
 
 
 
-**1. Clone the repository**
-     ```bash
-     git clone https://github.com/MalindaBotheju/Churn-Prediction-Project.git
-     ```
-     ```bash
-     cd Churn-Prediction-Project
-     ```
+**1. Clone the repository:**
+```bash
+git clone https://github.com/MalindaBotheju/Churn-Prediction-Project.git
+```
+```bash
+cd Churn-Prediction-Project
+```
 
 **2. Set up your Environment Variables**
     Create a .env file in the root directory and add your database URL (or use a local SQLite database for testing):
