@@ -22,3 +22,6 @@ threadpoolctl==3.6.0
 typing-inspection==0.4.2
 typing_extensions==4.15.0
 uvicorn==0.41.0
+SQLAlchemy>=2.0.0
+psycopg2-binary>=2.9.9
+python-dotenv>=1.0.0

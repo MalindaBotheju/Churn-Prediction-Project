@@ -5,17 +5,67 @@ from fastapi.templating import Jinja2Templates
 import joblib
 import pandas as pd
 import uvicorn
+import os
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, Column, Integer, String, Float, Boolean
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
+# ==========================================
+# DATABASE SETUP
+# ==========================================
+# 1. Load the hidden .env file
+load_dotenv()
+
+# 2. Grab the Database URL
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+# PRO-TIP FIX: Render gives URLs starting with "postgres://", 
+# but SQLAlchemy strictly requires "postgresql://". This fixes it!
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+# 3. Establish the connection (if a URL exists)
+if DATABASE_URL:
+    engine = create_engine(DATABASE_URL)
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    Base = declarative_base()
+
+    # 4. Define your Database Table
+    class PredictionRecord(Base):
+        __tablename__ = "predictions"
+        
+        id = Column(Integer, primary_key=True, index=True)
+        tenure = Column(Float)
+        monthly_charges = Column(Float)
+        contract_type = Column(String)
+        internet_service = Column(String)
+        tech_support = Column(String)
+        online_security = Column(String)
+        paperless_billing = Column(String)
+        churn_risk = Column(Boolean) 
+        probability = Column(Float)
+
+    # 5. Create the table in PostgreSQL if it doesn't exist
+    Base.metadata.create_all(bind=engine)
+else:
+    print("WARNING: No DATABASE_URL found. Database features will be disabled.")
+
+
+# ==========================================
+# MACHINE LEARNING SETUP
+# ==========================================
 # Load your saved brain!
 model = joblib.load('telco_churn_model.pkl')
 scaler = joblib.load('telco_scaler.pkl')
 
+
 @app.get("/", response_class=HTMLResponse)
 async def read_item(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "prediction": None})
+
 
 @app.post("/", response_class=HTMLResponse)
 async def predict(request: Request):
@@ -48,7 +98,6 @@ async def predict(request: Request):
     input_df['TotalCharges'] = scaled_values[0][2]
     
     # 4. ONE-HOT ENCODING TRANSLATIONS
-    
     # Contract
     if contract == "One year" and 'Contract_One year' in input_df.columns:
         input_df['Contract_One year'] = 1
@@ -73,19 +122,51 @@ async def predict(request: Request):
     elif online_security == "No internet service" and 'OnlineSecurity_No internet service' in input_df.columns:
         input_df['OnlineSecurity_No internet service'] = 1
 
-    # Paperless Billing (You manually mapped Yes=1, No=0 in your notebook)
+    # Paperless Billing 
     if 'PaperlessBilling' in input_df.columns:
         input_df['PaperlessBilling'] = 1 if paperless_billing == "Yes" else 0
 
-    
     # 5. Make the Real Prediction!
     probability = model.predict_proba(input_df)[0][1]
     is_churn = probability > 0.5  
     
+    # ==========================================
+    # SAVE TO DATABASE
+    # ==========================================
+    if DATABASE_URL:
+        db = SessionLocal()
+        try:
+            new_record = PredictionRecord(
+                tenure=tenure,
+                monthly_charges=monthly_charges,
+                contract_type=contract,
+                internet_service=internet_service,
+                tech_support=tech_support,
+                online_security=online_security,
+                paperless_billing=paperless_billing,
+                churn_risk=bool(is_churn),
+                probability=float(probability)
+            )
+            db.add(new_record)
+            db.commit()
+        except Exception as e:
+            print(f"Database error occurred: {e}")
+            db.rollback()
+        finally:
+            db.close() # Always close the connection!
+
+    
     return templates.TemplateResponse("index.html", {
         "request": request, 
         "prediction": bool(is_churn),
-        "probability": round(probability * 100, 1)
+        "probability": round(probability * 100, 1),
+        "tenure_val": tenure,
+        "monthly_charges_val": monthly_charges,
+        "contract_val": contract,
+        "internet_service_val": internet_service,
+        "tech_support_val": tech_support,
+        "online_security_val": online_security,
+        "paperless_billing_val": paperless_billing
     })
 
 if __name__ == "__main__":
