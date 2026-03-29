@@ -20,10 +20,10 @@ An end-to-end Machine Learning pipeline and API that predicts whether a telecom 
 ## 📸 Interface Screenshots
 
 **High Risk Customer Detection:**
-![High Risk Prediction](screenshot/churn_high_risk.png)
+![High Risk Prediction](screenshots/churn_high_risk.png)
 
 **Safe Customer Detection:**
-![Safe Customer Prediction](screenshot/churn_safe.png)
+![Safe Customer Prediction](screenshots/churn_safe.png)
 
 ---
 
@@ -96,6 +96,7 @@ docker run -p 8000:8000 --env-file .env churn-api
 **4. View the Application**
 
 Frontend Web UI: Open http://localhost:8000
+
 API Documentation: Open http://localhost:8000/docs
 
 Developed by Malinda Boteju
