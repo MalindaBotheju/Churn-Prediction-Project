@@ -19,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"  # MUST match your Render environment!
+          python-version: "3.12"  # MUST match your Render environment!
 
       # Cache pip to make subsequent runs much faster
       - name: Cache pip packages
