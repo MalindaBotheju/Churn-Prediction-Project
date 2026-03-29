@@ -69,16 +69,6 @@ Before you begin, ensure you have the following installed:
 ---
 
 **1. Clone the repository:**
-     ```bash
-     git clone [https://github.com/MalindaBotheju/Churn-Prediction-Project.git](https://github.com/MalindaBotheju/Churn-Prediction-Project.git)
-     ```
-     ```bash
-     cd Churn-Prediction-Project
-     ```
-
-
-
-**1. Clone the repository:**
 ```bash
 git clone https://github.com/MalindaBotheju/Churn-Prediction-Project.git
 ```
@@ -86,22 +76,26 @@ git clone https://github.com/MalindaBotheju/Churn-Prediction-Project.git
 cd Churn-Prediction-Project
 ```
 
-**2. Set up your Environment Variables**
-    Create a .env file in the root directory and add your database URL (or use a local SQLite database for testing):
+**2. Set up your Environment Variables:**
 
-    Code snippet
-    DATABASE_URL=sqlite:///./test.db
+Create a .env file in the root directory and add your database URL (or use a local SQLite database for testing):
 
-**3. Build and Run with Docker**
-    ```bash
-    docker build -t churn-api .
-    ```
-    ```bash
-    docker run -p 8000:8000 --env-file .env churn-api
-    ```
+Code snippet
+```bash
+DATABASE_URL=sqlite:///./test.db
+```
+
+**3. Build and Run with Docker:**
+```bash
+docker build -t churn-api .
+```
+```bash
+docker run -p 8000:8000 --env-file .env churn-api
+```
 
 **4. View the Application**
-    Frontend Web UI: Open http://localhost:8000
-    API Documentation: Open http://localhost:8000/docs
+
+Frontend Web UI: Open http://localhost:8000
+API Documentation: Open http://localhost:8000/docs
 
 Developed by Malinda Boteju
