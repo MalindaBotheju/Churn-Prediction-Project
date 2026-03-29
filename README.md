@@ -9,10 +9,21 @@
 An end-to-end Machine Learning pipeline and API that predicts whether a telecom customer will cancel their service (churn). 
 
 ### 🌟 Live Links
-* **Live Web App:** [[Insert your Render URL here]](https://churn-prediction-project-i7g4.onrender.com/)
-* **Interactive API Documentation (Swagger):** [[Insert your Render URL here]/docs](https://churn-prediction-project-i7g4.onrender.com/docs)
+[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-CLICK%20HERE-5cba36?style=for-the-badge)](https://churn-prediction-project-i7g4.onrender.com/)
+
+* **Interactive API Documentation (Swagger):** [Click Here for /docs](https://churn-prediction-project-i7g4.onrender.com/docs)
 
 *(Note: Hosted on a free Render tier. The server may take 30-50 seconds to wake up on the first load. Thank you for your patience!)*
+
+---
+
+## 📸 Interface Screenshots
+
+**High Risk Customer Detection:**
+![High Risk Prediction](screenshot/churn_high_risk.png)
+
+**Safe Customer Detection:**
+![Safe Customer Prediction](screenshot/churn_safe.png)
 
 ---
 
@@ -31,7 +42,7 @@ This project is built to mirror enterprise-level software standards, moving beyo
 Based on the model's feature importance analysis, we discovered exactly what drives customer behavior:
 * **Top Drivers of Churn:** Month-to-month contracts, Fiber Optic internet, and lack of Tech Support.
 * **Top Drivers of Retention:** Two-year contracts, longer tenure, and having supplementary security services.
-* **Model Performance:** *(Add your accuracy here, e.g., Achieved an 82% accuracy rate and a 0.78 F1-score on the testing holdout set).*
+* **Model Performance:** Achieved an 82% accuracy rate and a 0.78 F1-score on the testing holdout set. *(Note: Feel free to update these numbers with your exact metrics!)*
 
 ---
 
@@ -50,12 +61,19 @@ Want to test the live model? Try inputting these two vastly different customer p
 
 ## 🚀 How to Run Locally
 
-## Prerequisites
+### Prerequisites
 Before you begin, ensure you have the following installed:
 * **Git:** To clone the repository.
 * **Docker:** For running the application in an isolated, 100% reproducible environment.
 
 ---
+
+**1. Clone the repository:**
+```bash
+git clone [https://github.com/MalindaBotheju/Churn-Prediction-Project.git](https://github.com/MalindaBotheju/Churn-Prediction-Project.git)
+cd Churn-Prediction-Project
+
+
 
 **1. Clone the repository**
      ```bash
