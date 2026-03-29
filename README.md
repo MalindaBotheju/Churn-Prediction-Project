@@ -29,9 +29,9 @@ An end-to-end Machine Learning pipeline and API that predicts whether a telecom 
 
 ## 📸 Interface Screenshots
 
-**High Risk Customer Detection:** <img src="screenshot/churn_high_risk.png" alt="High Risk Prediction" width="500">
+**High Risk Customer Detection:** <img src="screenshots/churn_high_risk.png" alt="High Risk Prediction" width="500">
 
-**Safe Customer Detection:** <img src="screenshot/churn_safe.png" alt="Safe Customer Prediction" width="500">
+**Safe Customer Detection:** <img src="screenshots/churn_safe.png" alt="Safe Customer Prediction" width="500">
 
 ## 🏗️ System Architecture & MLOps
 This project is built to mirror enterprise-level software standards, moving beyond a simple ML script into a fully containerized, tested, and deployed web service.
