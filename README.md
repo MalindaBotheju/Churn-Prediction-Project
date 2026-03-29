@@ -69,9 +69,12 @@ Before you begin, ensure you have the following installed:
 ---
 
 **1. Clone the repository:**
-```bash
-git clone [https://github.com/MalindaBotheju/Churn-Prediction-Project.git](https://github.com/MalindaBotheju/Churn-Prediction-Project.git)
-cd Churn-Prediction-Project
+     ```bash
+     git clone [https://github.com/MalindaBotheju/Churn-Prediction-Project.git](https://github.com/MalindaBotheju/Churn-Prediction-Project.git)
+     ```
+     ```bash
+     cd Churn-Prediction-Project
+     ```
 
 
 
