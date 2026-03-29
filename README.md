@@ -53,9 +53,12 @@ Want to test the live model? Try inputting these two vastly different customer p
 Because this project uses a production-grade database and Docker, follow these steps to run it on your local machine:
 
 **1. Clone the repository**
-    ```bash
-    git clone [https://github.com/](https://github.com/)[YourUsername]/[YourRepo].git
-    cd [YourRepo]
+     ```bash
+     git clone https://github.com/MalindaBotheju/Churn-Prediction-Project.git
+     ```
+     ```bash
+     cd Churn-Prediction-Project
+     ```
 
 **2. Set up your Environment Variables**
     Create a .env file in the root directory and add your database URL (or use a local SQLite database for testing):
