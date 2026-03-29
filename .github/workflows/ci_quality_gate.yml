@@ -55,7 +55,7 @@ jobs:
       # We provide a dummy DB URL to make sure the app initializes, but we MOCK the interaction
       - name: Run Automated Tests (Pytest with Coverage)
         env:
-          DATABASE_URL: 'postgresql://dummy_user:dummy_password@localhost:5432/dummy_db' # Provide a dummy URL for init
+          DATABASE_URL: 'sqlite:///:memory:' # Use a temporary in-memory database!
           TESTING: 'True'
         run: |
           # This command runs tests and generates a code coverage report
