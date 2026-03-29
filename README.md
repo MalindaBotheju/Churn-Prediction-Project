@@ -48,9 +48,14 @@ Want to test the live model? Try inputting these two vastly different customer p
 
 ---
 
-## 💻 How to Run Locally
+## 🚀 How to Run Locally
 
-Because this project uses a production-grade database and Docker, follow these steps to run it on your local machine:
+## Prerequisites
+Before you begin, ensure you have the following installed:
+* **Git:** To clone the repository.
+* **Docker:** For running the application in an isolated, 100% reproducible environment.
+
+---
 
 **1. Clone the repository**
      ```bash
