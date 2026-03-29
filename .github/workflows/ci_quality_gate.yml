@@ -1,0 +1,62 @@
+name: Python App CI (ML Model & Code Quality)
+
+# Define when this pipeline runs (crucial for stability)
+on:
+  push:
+    branches: [ "main", "dev" ]  # Run on pushes to main and development branches
+  pull_request:
+    branches: [ "main" ]        # Run whenever anyone opens a PR TO main
+
+# This job acts as a strict quality gate before deployment to Render
+jobs:
+  ci_quality_gate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"  # MUST match your Render environment!
+
+      # Cache pip to make subsequent runs much faster
+      - name: Cache pip packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # Professional Step 1: Code Formatting (Optional but recommended)
+      # Checks if code is consistently formatted (install `black` locally and run `black .`)
+      #- name: Check Code Formatting (Black)
+      #  run: |
+      #    pip install black
+      #    black --check .
+
+      # Professional Step 2: Code Linting
+      # Checks for potential bugs, unused imports, and style errors.
+      - name: Lint Code (Flake8)
+        run: |
+          # stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+      # Professional Step 3: Run Automated Tests
+      # We provide a dummy DB URL to make sure the app initializes, but we MOCK the interaction
+      - name: Run Automated Tests (Pytest with Coverage)
+        env:
+          DATABASE_URL: 'postgresql://dummy_user:dummy_password@localhost:5432/dummy_db' # Provide a dummy URL for init
+          TESTING: 'True'
+        run: |
+          # This command runs tests and generates a code coverage report
+          pytest --cov=app --cov-report=term-missing test_app.py
