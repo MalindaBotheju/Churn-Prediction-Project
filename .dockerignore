@@ -1,0 +1,25 @@
+# Virtual environments (Docker installs its own inside the container)
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter Notebooks (We don't need notebooks in a production backend)
+.ipynb_checkpoints/
+*.ipynb
+
+# Raw Data (The container only needs the .pkl models, not the raw CSV data)
+dataset/
+*.csv
+.~lock.*
+
+# Git folder
+.git/
+.gitignore
+
+# README and screenshots (Not needed to run the app)
+screenshots/
+README.md
