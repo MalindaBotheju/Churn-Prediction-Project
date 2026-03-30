@@ -2,10 +2,12 @@
 
 [![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-CLICK%20HERE-5cba36?style=for-the-badge)](https://churn-prediction-project-i7g4.onrender.com/)
 
+---
+
 ## 📌 Project Overview
 This project is a fully deployed Machine Learning application that helps telecom companies identify customers who are at high risk of canceling their subscriptions. Users can input customer metrics into the modern web dashboard and instantly receive a churn probability score.
 
-<img src="screenshots/dash.png" alt="Main Dashboard" width="800">
+<img src="screenshots/dash.png" alt="Main Dashboard" width="600">
 
 ---
 
@@ -32,20 +34,20 @@ This project is built to mirror enterprise-level software standards, moving beyo
 Based on the model's feature importance analysis, we discovered exactly what drives customer behavior:
 * **Top Drivers of Churn:** Month-to-month contracts, Fiber Optic internet, and lack of Tech Support.
 * **Top Drivers of Retention:** Two-year contracts, longer tenure, and having supplementary security services.
-* **Model Performance:** Achieved an 82% accuracy rate and a 0.78 F1-score on the testing holdout set. *(Note: Feel free to update these numbers with your exact metrics!)*
+* **Model Performance:** Achieved an 79% accuracy rate and a 0.71 F1-score on the testing holdout set.
 
 ---
 
 ## 🧪 Test it Yourself!
-Want to test the live model? Try inputting these two vastly different customer profiles into the web app (or via the `/docs` API endpoint):
+Want to test the live model? Try inputting these two customer profiles straight into the web app:
 
-**Profile 1: Likely to Churn (High Risk)**
+**Profile 1: Likely to Churn (High Risk Customer)**
 * **Tenure:** 2 months | **Contract:** Month-to-month | **Internet:** Fiber Optic
-* **Tech Support:** No | **Online Security:** No | **Monthly Charges:** $95.50
+* **Tech Support:** No | **Online Security:** No | **Monthly Charges:** $70.70
 
-**Profile 2: Likely to Stay (Safe)**
-* **Tenure:** 68 months | **Contract:** Two year | **Internet:** DSL
-* **Tech Support:** Yes | **Online Security:** Yes | **Monthly Charges:** $25.00
+**Profile 2: Likely to Stay (Safe Customer)**
+* **Tenure:** 72 months | **Contract:** Two year | **Internet:** DSL
+* **Tech Support:** Yes | **Online Security:** Yes | **Monthly Charges:** $90.25
 
 ---
 
