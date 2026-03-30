@@ -2,12 +2,12 @@
 
 [![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-CLICK%20HERE-5cba36?style=for-the-badge)](https://churn-prediction-project-i7g4.onrender.com/)
 
----
-
 ## 📌 Project Overview
 This project is a fully deployed Machine Learning application that helps telecom companies identify customers who are at high risk of canceling their subscriptions. Users can input customer metrics into the modern web dashboard and instantly receive a churn probability score.
 
-<img src="screenshots/dash.png" alt="Main Dashboard" width="600">
+<p align="center">
+  <img src="screenshots/dash.png" alt="Main Dashboard" width="500">
+</p>
 
 ---
 
