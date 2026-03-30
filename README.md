@@ -43,6 +43,7 @@ graph TD
     B -->|Log Request & Result| D[(PostgreSQL Database)]
     E[GitHub Actions] -->|Pytest & Flake8| B
     E -->|Deploy| F[Render Docker Container]
+```
 
 ---
 
@@ -87,6 +88,7 @@ Want to test the live model? Try inputting these two customer profiles straight 
 ├── requirements.txt        # Python dependencies and libraries
 ├── test_app.py             # Pytest automated testing suite
 └── test.db                 # Local SQLite database for testing
+```
 
 ---
 
