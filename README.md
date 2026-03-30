@@ -68,6 +68,7 @@ Want to test the live model? Try inputting these two customer profiles straight 
 ---
 
 ## 📂 Repository Structure
+
 ```text
 ├── .github/workflows/      # CI/CD pipeline configuration (GitHub Actions)
 ├── notebooks/              # Jupyter notebooks for data exploration and model training
