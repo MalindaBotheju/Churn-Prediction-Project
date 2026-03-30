@@ -1,37 +1,21 @@
 # 📉 Telco Customer Churn Predictor AI
 
-[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker)](https://www.docker.com/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)
-[![CI/CD Pipeline](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions)](https://github.com/features/actions)
-
-An end-to-end Machine Learning pipeline and API that predicts whether a telecom customer will cancel their service (churn). 
-
-### 🌟 Live Links
 [![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-CLICK%20HERE-5cba36?style=for-the-badge)](https://churn-prediction-project-i7g4.onrender.com/)
 
-* **Interactive API Documentation (Swagger):** [Click Here for /docs](https://churn-prediction-project-i7g4.onrender.com/docs)
+## 📌 Project Overview
+This project is a fully deployed Machine Learning application that helps telecom companies identify customers who are at high risk of canceling their subscriptions. Users can input customer metrics into the modern web dashboard and instantly receive a churn probability score.
 
-*(Note: Hosted on a free Render tier. The server may take 30-50 seconds to wake up on the first load. Thank you for your patience!)*
-
----
-
-## 📸 Interface Screenshots
-
-**High Risk Customer Detection:**
-![High Risk Prediction](screenshots/churn_high_risk.png)
-
-**Safe Customer Detection:**
-![Safe Customer Prediction](screenshots/churn_safe.png)
+<img src="screenshots/dash.png" alt="Main Dashboard" width="800">
 
 ---
 
-## 📸 Interface Screenshots
+## 📸 Prediction Results
 
-**High Risk Customer Detection:** <img src="screenshots/churn_high_risk.png" alt="High Risk Prediction" width="500">
+| High Risk Customer Detection | Safe Customer Detection |
+| :---: | :---: |
+| <img src="screenshots/risk.png" alt="High Risk" width="100%"> | <img src="screenshots/safe.png" alt="Safe" width="100%"> |
 
-**Safe Customer Detection:** <img src="screenshots/churn_safe.png" alt="Safe Customer Prediction" width="500">
+---
 
 ## 🏗️ System Architecture & MLOps
 This project is built to mirror enterprise-level software standards, moving beyond a simple ML script into a fully containerized, tested, and deployed web service.
