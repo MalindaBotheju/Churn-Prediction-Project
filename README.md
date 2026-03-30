@@ -35,15 +35,9 @@ This project is built to mirror enterprise-level software standards, moving beyo
 * **CI/CD Quality Gate:** Automated GitHub Actions pipeline that lints code (Flake8) and runs automated tests (Pytest) in an isolated in-memory SQLite database before allowing deployments.
 
 ### Workflow Diagram
-```mermaid
-graph TD
-    A[User Browser / UI] -->|Input Data| B(FastAPI Application)
-    B --> C{Scikit-Learn Model}
-    C -->|Churn Prediction| B
-    B -->|Log Request & Result| D[(PostgreSQL Database)]
-    E[GitHub Actions] -->|Pytest & Flake8| B
-    E -->|Deploy| F[Render Docker Container]
-```
+<p align="center">
+  <img src="screenshots/workflow.png" alt="System Architecture Workflow" width="100%">
+</p>
 
 ---
 
