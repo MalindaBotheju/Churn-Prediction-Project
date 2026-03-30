@@ -1,5 +1,11 @@
 # 📉 Telco Customer Churn Predictor AI
 
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker)](https://www.docker.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)
+[![CI/CD Pipeline](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions)](https://github.com/features/actions)
+
 [![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-CLICK%20HERE-5cba36?style=for-the-badge)](https://churn-prediction-project-i7g4.onrender.com/)
 
 ## 📌 Project Overview
@@ -28,6 +34,16 @@ This project is built to mirror enterprise-level software standards, moving beyo
 * **Containerization:** Fully containerized using Docker (Python 3.12-slim base) for consistent environments across development and production.
 * **CI/CD Quality Gate:** Automated GitHub Actions pipeline that lints code (Flake8) and runs automated tests (Pytest) in an isolated in-memory SQLite database before allowing deployments.
 
+### Workflow Diagram
+```mermaid
+graph TD
+    A[User Browser / UI] -->|Input Data| B(FastAPI Application)
+    B --> C{Scikit-Learn Model}
+    C -->|Churn Prediction| B
+    B -->|Log Request & Result| D[(PostgreSQL Database)]
+    E[GitHub Actions] -->|Pytest & Flake8| B
+    E -->|Deploy| F[Render Docker Container]
+
 ---
 
 ## 📊 Business Insights & ML Performance
@@ -51,14 +67,34 @@ Want to test the live model? Try inputting these two customer profiles straight 
 
 ---
 
+## 📂 Repository Structure
+```text
+├── .github/workflows/      # CI/CD pipeline configuration (GitHub Actions)
+├── notebooks/              # Jupyter notebooks for data exploration and model training
+├── screenshots/            # Images used in the README documentation
+├── static/                 # Static assets (CSS, JS, images for the web app)
+├── templates/              # Jinja2 HTML templates for the frontend web UI
+├── .env                    # Environment variables (Ignored in Git)
+├── .flake8                 # Configuration for code linting rules
+├── .gitignore              # Specifies intentionally untracked files to ignore
+├── app.py                  # Main FastAPI application and API routing
+├── churn.csv               # Raw telco dataset used for model training
+├── database.py             # Database connection and SQLAlchemy ORM setup
+├── Dockerfile              # Docker container configuration for deployment
+├── model.pkl               # Trained Logistic Regression model (Serialized)
+├── README.md               # Project documentation
+├── requirements.txt        # Python dependencies and libraries
+├── test_app.py             # Pytest automated testing suite
+└── test.db                 # Local SQLite database for testing
+
+---
+
 ## 🚀 How to Run Locally
 
 ### Prerequisites
 Before you begin, ensure you have the following installed:
 * **Git:** To clone the repository.
 * **Docker:** For running the application in an isolated, 100% reproducible environment.
-
----
 
 **1. Clone the repository:**
 ```bash
@@ -71,12 +107,9 @@ cd Churn-Prediction-Project
 **2. Set up your Environment Variables:**
 
 Create a .env file in the root directory and add your database URL (or use a local SQLite database for testing):
-
-Code snippet
 ```bash
 DATABASE_URL=sqlite:///./test.db
 ```
-
 **3. Build and Run with Docker:**
 ```bash
 docker build -t churn-api .
